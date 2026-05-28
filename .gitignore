@@ -1,0 +1,20 @@
+# macOS が作るゴミファイル
+.DS_Store
+._*
+
+# ログ
+*.log
+
+# 環境変数（パスワードとか入れる用、念のため除外）
+.env
+.env.local
+.env.*.local
+
+# VS Code の個人設定
+.vscode/
+
+# Node.js（将来使うかも）
+node_modules/
+
+# OS の縮小表示
+Thumbs.db

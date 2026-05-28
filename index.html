@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>藤村歯科医院｜京都・河原町三条の歯科医院</title>
+<meta name="description" content="京都市中京区・河原町三条の藤村歯科医院。痛みに配慮した丁寧な治療、できるだけ歯を残す保存治療、前歯を美しく整える審美治療。歯学博士・大阪大学卒の院長による、ワンランク上の歯科医療を。" />
+<link rel="canonical" href="https://www.fujimura-shika.com/" />
+
+<!-- OGP / Twitter（SNSシェア用）※og:imageは本番画像に差し替え【要確認】 -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="藤村歯科医院" />
+<meta property="og:title" content="藤村歯科医院｜京都・河原町三条の歯科医院" />
+<meta property="og:description" content="京都市中京区・河原町三条の藤村歯科医院。痛みに配慮した丁寧な治療、できるだけ歯を残す保存治療、前歯を美しく整える審美治療。" />
+<meta property="og:url" content="https://www.fujimura-shika.com/" />
+<meta property="og:image" content="https://www.fujimura-shika.com/ogp.jpg" />
+<meta property="og:locale" content="ja_JP" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<!-- favicon（簡易SVG・本番でロゴに差し替え推奨） -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232F5867'/%3E%3Ctext x='16' y='23' font-size='19' text-anchor='middle' fill='%23B59766' font-family='serif'%3E藤%3C/text%3E%3C/svg%3E" />
+
+<!-- Tailwind CSS (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts: 明朝見出し＋ゴシック本文 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          serif: ['"Shippori Mincho B1"', '"Noto Serif JP"', 'serif'],
+          sans:  ['"Noto Sans JP"', 'system-ui', 'sans-serif'],
+          en:    ['"Cormorant Garamond"', '"Shippori Mincho B1"', 'serif'],
+        },
+        colors: {
+          ivory:   '#FAFAF7',   // ベース（ほんのり温かみ）
+          paper:   '#FFFFFF',
+          mist:    '#F2F4F5',   // セクション切替の薄いトーン
+          ink:     '#1E2A33',   // 本文：深いネイビーグレー
+          inkSoft: '#5C6B75',
+          line:    '#E4E7E9',
+          // くすみブルー〜ティール（主役）
+          teal:    '#5A8896',
+          tealDk:  '#2F5867',
+          tealLt:  '#D9E4E7',
+          // 差し色：ゴールド（少量）
+          gold:    '#B59766',
+          goldDk:  '#8E723F',
+        },
+        letterSpacing: {
+          'wider2': '0.18em',
+        }
+      }
+    }
+  };
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Noto Sans JP', system-ui, sans-serif;
+    color: #1E2A33;
+    background-color: #FAFAF7;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.85;
+    /* 日本語を文節単位で改行し、カタカナ語などが途中で割れないようにする（Chrome系で有効・他ブラウザは従来動作にフォールバック） */
+    word-break: auto-phrase;
+  }
+
+  /* 明朝見出し */
+  .serif { font-family: 'Shippori Mincho B1', 'Noto Serif JP', serif; font-weight: 500; letter-spacing: 0.08em; }
+  .en    { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }
+
+  /* 細い縦罫線 */
+  .vline::before {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 56px;
+    margin: 0 auto 24px;
+    background: #B59766;
+  }
+
+  /* セクション見出し用ラベル */
+  .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    letter-spacing: 0.25em;
+    color: #B59766;
+    font-size: 0.78rem;
+  }
+
+  /* スクロール時のアンカー位置 */
+  section { scroll-margin-top: 96px; }
+
+  /* スマホ下部固定CTA用の余白 */
+  @media (max-width: 768px) {
+    body { padding-bottom: 84px; }
+  }
+
+  /* 数字や英字を上品に */
+  .num { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-style: normal; letter-spacing: 0.02em; }
+
+  /* 電話番号・診療時間などの数字（清潔感のあるサンセリフ＋等幅数字で可読性と上質さを両立） */
+  .tel { font-family: 'Shippori Mincho B1', 'Noto Serif JP', serif; font-weight: 600; font-variant-numeric: tabular-nums; letter-spacing: 0.04em; }
+</style>
+
+<!-- 構造化データ（ローカルSEO用）※緯度経度・土曜の営業時間は要確認 -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "藤村歯科医院",
+  "image": "https://www.fujimura-shika.com/ogp.jpg",
+  "url": "https://www.fujimura-shika.com/",
+  "telephone": "+81-75-223-5818",
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "604-8006",
+    "addressRegion": "京都府",
+    "addressLocality": "京都市中京区",
+    "streetAddress": "河原町通三条上ル 西側 グリントランドビル2F",
+    "addressCountry": "JP"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "10:00",
+      "closes": "13:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "15:00",
+      "closes": "19:00"
+    }
+  ]
+}
+</script>
+</head>
+<body class="bg-ivory text-ink">
+
+<!-- ===== ヘッダー（固定・上質なミニマル構成） ===== -->
+<header class="fixed top-0 inset-x-0 z-50 bg-paper/95 backdrop-blur border-b border-line">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 h-20 md:h-24 flex items-center justify-between gap-6">
+    <!-- ロゴ -->
+    <a href="#top" class="shrink-0 leading-tight">
+      <span class="block text-[10px] md:text-[11px] tracking-wider2 text-gold en">FUJIMURA DENTAL CLINIC</span>
+      <span class="block serif text-lg md:text-xl">藤村歯科医院</span>
+    </a>
+
+    <!-- ナビ -->
+    <nav class="hidden lg:flex items-center gap-8 text-[13px] tracking-wider">
+      <a href="#concept" class="hover:text-teal transition">理念</a>
+      <a href="#doctor" class="hover:text-teal transition">院長紹介</a>
+      <a href="#menu" class="hover:text-teal transition">診療案内</a>
+      <a href="#whitening" class="hover:text-teal transition">審美・ホワイトニング</a>
+      <a href="#cases" class="hover:text-teal transition">症例</a>
+      <a href="#access" class="hover:text-teal transition">アクセス</a>
+    </nav>
+
+    <!-- CTA -->
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="tel:0752235818" class="hidden lg:inline-flex items-center gap-2 text-sm tracking-wider hover:text-teal whitespace-nowrap" aria-label="電話 075-223-5818">
+        <span class="en text-lg">tel.</span>
+        <span class="tel text-lg tracking-wider">075-223-5818</span>
+      </a>
+      <a href="#reserve" class="hidden lg:inline-flex items-center whitespace-nowrap px-4 md:px-5 py-2.5 md:py-3 bg-teal text-paper text-[13px] tracking-wider hover:bg-tealDk transition">Web予約</a>
+      <a href="#line" class="hidden lg:inline-flex items-center whitespace-nowrap px-4 md:px-5 py-2.5 md:py-3 border border-teal text-teal text-[13px] tracking-wider hover:bg-tealLt transition">LINE予約</a>
+      <!-- ハンバーガー（lg未満で表示） -->
+      <button id="menuToggle" type="button" aria-label="メニューを開く" aria-expanded="false" aria-controls="mobileMenu" class="lg:hidden inline-flex flex-col items-center justify-center w-11 h-11 gap-[5px]">
+        <span class="block w-6 h-px bg-ink"></span>
+        <span class="block w-6 h-px bg-ink"></span>
+        <span class="block w-6 h-px bg-ink"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ===== モバイルメニュー（lg未満で表示） ===== -->
+<div id="mobileMenu" class="fixed inset-0 z-40 lg:hidden hidden">
+  <div id="menuOverlay" class="absolute inset-0 bg-ink/40"></div>
+  <nav class="absolute top-20 md:top-24 inset-x-0 bg-paper border-b border-line shadow-xl">
+    <ul class="max-w-7xl mx-auto px-6 py-2 grid text-[15px]">
+      <li><a href="#concept" class="block py-3.5 border-b border-line hover:text-teal">理念</a></li>
+      <li><a href="#doctor" class="block py-3.5 border-b border-line hover:text-teal">院長紹介</a></li>
+      <li><a href="#menu" class="block py-3.5 border-b border-line hover:text-teal">診療案内</a></li>
+      <li><a href="#whitening" class="block py-3.5 border-b border-line hover:text-teal">審美・ホワイトニング</a></li>
+      <li><a href="#cases" class="block py-3.5 border-b border-line hover:text-teal">症例</a></li>
+      <li><a href="#access" class="block py-3.5 hover:text-teal">アクセス</a></li>
+    </ul>
+    <div class="max-w-7xl mx-auto px-6 py-5 flex gap-2 border-t border-line">
+      <a href="#reserve" class="flex-1 inline-flex items-center justify-center px-3 py-3 bg-teal text-paper text-[13px] tracking-wider">Web予約</a>
+      <a href="#line" class="flex-1 inline-flex items-center justify-center px-3 py-3 border border-teal text-teal text-[13px] tracking-wider">LINE予約</a>
+      <a href="tel:0752235818" class="flex-1 inline-flex items-center justify-center px-3 py-3 border border-line text-[13px] tracking-wider">お電話</a>
+    </div>
+  </nav>
+</div>
+
+<!-- スマホ固定CTA -->
+<div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-paper/97 backdrop-blur border-t border-line px-3 py-2 flex gap-2">
+  <a href="tel:0752235818" class="flex-1 inline-flex items-center justify-center py-3 border border-line text-[13px] tracking-wider">お電話</a>
+  <a href="#reserve" class="flex-1 inline-flex items-center justify-center py-3 bg-teal text-paper text-[13px] tracking-wider">Web予約</a>
+  <a href="#line" class="flex-1 inline-flex items-center justify-center py-3 border border-teal text-teal text-[13px] tracking-wider">LINE</a>
+</div>
+
+<main id="top" class="pt-20 md:pt-24">
+
+<!-- ===== ファーストビュー（写真主役・余白たっぷり） ===== -->
+<section class="relative">
+  <!-- フルブリードの大判ビジュアル -->
+  <div class="relative">
+    <img
+      src="images/hero.png"
+      alt="自然光が差し込む、藤村歯科医院の上質で清潔感のある診療室"
+      class="w-full h-[60vh] md:h-[78vh] object-cover"
+    >
+    <!-- うっすらオーバーレイ -->
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/35 via-ink/10 to-transparent"></div>
+
+    <!-- キャッチコピー -->
+    <div class="absolute inset-0 flex items-center">
+      <div class="max-w-7xl mx-auto px-6 sm:px-10 w-full">
+        <div class="max-w-2xl text-paper">
+          <p class="en text-paper/85 tracking-wider2 mb-6 text-sm md:text-base">— Kyoto, since 【要確認：開業年】</p>
+          <h1 class="serif text-[28px] sm:text-4xl md:text-6xl leading-[1.55] md:leading-[1.5]">ひとつひとつの歯に、<br>ていねいに向き合う。</h1>
+          <p class="mt-8 text-paper/90 leading-loose text-sm md:text-base max-w-lg">痛みに配慮した、できるだけ歯を残す治療を。<br>そして、前歯の自然な美しさまで——<br>京都・河原町三条の歯科医院。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 下部に診療時間／予約バー -->
+  <div class="bg-paper border-b border-line">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 py-6 grid md:grid-cols-3 gap-4 md:gap-8 items-center text-sm">
+      <div class="flex items-center gap-5">
+        <span class="en text-gold text-xs tracking-wider2">HOURS</span>
+        <span><span class="tel text-base">10:00–13:00</span> <span class="text-inkSoft mx-1">/</span> <span class="tel text-base">15:00–19:00</span></span>
+      </div>
+      <div class="flex items-center gap-5">
+        <span class="en text-gold text-xs tracking-wider2">CLOSED</span>
+        <span>第1・3・5土曜／日曜／祝日</span>
+      </div>
+      <div class="flex items-center gap-3 md:justify-end">
+        <a href="tel:0752235818" class="tel text-lg tracking-wider hover:text-teal">075-223-5818</a>
+        <a href="#reserve" class="inline-flex items-center px-5 py-2.5 bg-teal text-paper text-[12px] tracking-wider hover:bg-tealDk transition">ご予約</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== コンセプト（3本柱：痛みに配慮／歯を残す／前歯を美しく） ===== -->
+<section id="concept" class="py-24 md:py-36">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-20 md:mb-28">
+      <p class="eyebrow">CONCEPT</p>
+      <div class="vline mt-6"></div>
+      <h2 class="serif text-2xl md:text-4xl leading-relaxed">歯科医療として、当たり前のことを、<br>ていねいに。</h2>
+      <p class="mt-8 text-inkSoft leading-loose">痛みに配慮した治療、できるだけ歯を残す保存治療、そして自然な美しさを求める審美治療。<br>当院がもっとも大切にしてきた、三つの柱です。</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-12 md:gap-16">
+      <!-- 01 痛みに配慮 -->
+      <article>
+        <p class="en text-gold tracking-wider2 text-sm">No. 01</p>
+        <h3 class="serif text-xl md:text-2xl mt-3 mb-5">痛みに配慮した治療</h3>
+        <p class="text-inkSoft leading-loose text-[15px]">
+          麻酔の一刺しから、できる限り痛みの少ない方法を選びます。「歯医者が苦手」という方こそ、どうぞお気兼ねなくご相談ください。
+        </p>
+      </article>
+
+      <!-- 02 歯を残す -->
+      <article>
+        <p class="en text-gold tracking-wider2 text-sm">No. 02</p>
+        <h3 class="serif text-xl md:text-2xl mt-3 mb-5">できるだけ歯を残す</h3>
+        <p class="text-inkSoft leading-loose text-[15px]">
+          ご自身の歯にまさるものはありません。「残せる歯は、最後まで残す」を基本姿勢に、保存的な治療を丁寧にご提案します。
+        </p>
+      </article>
+
+      <!-- 03 前歯の審美 -->
+      <article>
+        <p class="en text-gold tracking-wider2 text-sm">No. 03</p>
+        <h3 class="serif text-xl md:text-2xl mt-3 mb-5">前歯を、自然に美しく</h3>
+        <p class="text-inkSoft leading-loose text-[15px]">
+          笑顔のときに見える前歯を、不自然にならない範囲で美しく。素材や色味まで、ご納得いただけるまでご相談を重ねます。
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 院長紹介（控えめ・余白で見せる） ===== -->
+<section id="doctor" class="bg-mist py-20 md:py-28">
+  <div class="max-w-5xl mx-auto px-6 sm:px-10">
+    <div class="text-center mb-12 md:mb-16">
+      <p class="eyebrow">DIRECTOR</p>
+      <div class="vline mt-6"></div>
+      <h2 class="serif text-xl md:text-2xl">院長紹介</h2>
+    </div>
+
+    <div class="grid md:grid-cols-12 gap-10 md:gap-14 items-center">
+      <!-- 画像（小さめ・縦長） -->
+      <div class="md:col-span-4">
+        <img
+          src="https://placehold.co/600x800/D9E4E7/2F5867?text=Director"
+          alt="【ここに】院長・藤村英典先生のポートレート写真。白衣で、知的かつ穏やかな表情"
+          class="w-full max-w-[280px] md:max-w-none mx-auto aspect-[3/4] object-cover"
+        >
+      </div>
+
+      <!-- テキスト -->
+      <div class="md:col-span-8">
+        <p class="serif text-lg md:text-xl leading-loose">
+          藤村 英典
+          <span class="text-inkSoft text-sm font-sans ml-2 tracking-wider">ふじむら ひでのり</span>
+        </p>
+        <p class="text-xs text-gold tracking-wider2 en mt-1">歯学博士 ／ 大阪大学歯学部 卒業</p>
+
+        <!-- 【要確認】下記の院長メッセージはAIによる仮作成文。本人の実際の言葉に差し替えること -->
+        <p class="mt-6 text-inkSoft leading-loose text-[14px] md:text-[15px] max-w-2xl">
+          「専門性のある治療」と「気兼ねなく相談できる雰囲気」、その両立をいちばん大切にしてまいりました。
+          歯のお悩みは、見た目や費用のことも含めて、人には話しづらいもの。最初のご相談から、どうかご遠慮なくお聞かせください。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 診療案内（罫線ベースの上品な一覧） ===== -->
+<section id="menu" class="py-24 md:py-36">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+      <p class="eyebrow">MEDICAL MENU</p>
+      <div class="vline mt-6"></div>
+      <h2 class="serif text-2xl md:text-4xl">診療案内</h2>
+      <p class="mt-6 text-inkSoft leading-loose">どんなご相談からでも、お気軽にお声がけください。</p>
+    </div>
+
+    <ul class="grid md:grid-cols-2 lg:grid-cols-3 border-t border-line">
+      <!-- 項目テンプレ（罫線で区切る上品な見せ方） -->
+      <li class="group border-b border-line lg:border-r p-8 md:p-10 hover:bg-paper transition">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">01</span>
+          <span class="en text-xs tracking-wider2 text-inkSoft">General</span>
+        </div>
+        <h3 class="serif text-lg md:text-xl mb-3">一般歯科</h3>
+        <p class="text-sm text-inkSoft leading-loose">むし歯、知覚過敏など、日常的なお口のお悩み全般。</p>
+      </li>
+      <li class="group border-b border-line lg:border-r p-8 md:p-10 hover:bg-paper transition">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">02</span>
+          <span class="en text-xs tracking-wider2 text-inkSoft">Esthetic</span>
+        </div>
+        <h3 class="serif text-lg md:text-xl mb-3">審美歯科</h3>
+        <p class="text-sm text-inkSoft leading-loose">前歯の色や形を、自然で美しい仕上がりへ。</p>
+      </li>
+      <li class="group border-b border-line md:border-r lg:border-r-0 p-8 md:p-10 hover:bg-paper transition">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">03</span>
+          <span class="en text-xs tracking-wider2 text-inkSoft">Whitening</span>
+        </div>
+        <h3 class="serif text-lg md:text-xl mb-3">ホワイトニング／歯のエステ＆予防</h3>
+        <p class="text-sm text-inkSoft leading-loose">透明感のある自然な白さと、健やかな口元のケア。</p>
+      </li>
+      <li class="group border-b border-line lg:border-r p-8 md:p-10 hover:bg-paper transition">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">04</span>
+          <span class="en text-xs tracking-wider2 text-inkSoft">Implant</span>
+        </div>
+        <h3 class="serif text-lg md:text-xl mb-3">インプラント</h3>
+        <p class="text-sm text-inkSoft leading-loose">失った歯を、自然な噛み心地で取り戻すための選択肢。</p>
+      </li>
+      <li class="group border-b border-line lg:border-r p-8 md:p-10 hover:bg-paper transition">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">05</span>
+          <span class="en text-xs tracking-wider2 text-inkSoft">Periodontal</span>
+        </div>
+        <h3 class="serif text-lg md:text-xl mb-3">歯周治療</h3>
+        <p class="text-sm text-inkSoft leading-loose">歯を支える歯ぐきの健康こそ、長く歯を残す土台です。</p>
+      </li>
+      <li class="group border-b border-line md:border-r lg:border-r-0 p-8 md:p-10 hover:bg-paper transition">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">06</span>
+          <span class="en text-xs tracking-wider2 text-inkSoft">Orthodontic</span>
+        </div>
+        <h3 class="serif text-lg md:text-xl mb-3">矯正歯科</h3>
+        <p class="text-sm text-inkSoft leading-loose">歯ならびを整え、笑顔と機能の調和を取り戻します。</p>
+      </li>
+      <li class="group border-b border-line lg:border-r p-8 md:p-10 hover:bg-paper transition md:col-span-2 lg:col-span-1">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">07</span>
+          <span class="en text-xs tracking-wider2 text-inkSoft">Denture</span>
+        </div>
+        <h3 class="serif text-lg md:text-xl mb-3">針金の見えない入れ歯<span class="text-sm text-inkSoft font-normal ml-1">（ノンクラスプデンチャー）</span></h3>
+        <p class="text-sm text-inkSoft leading-loose">金属の留め具が目立たない、自然な見た目の入れ歯。</p>
+      </li>
+      <li class="group border-b border-line lg:border-r p-8 md:p-10 bg-tealDk text-paper md:col-span-2 lg:col-span-2">
+        <div class="flex items-baseline justify-between mb-4">
+          <span class="num text-gold text-xl">—</span>
+          <span class="en text-xs tracking-wider2 text-paper/70">Preservation</span>
+        </div>
+        <h3 class="serif text-lg md:text-2xl mb-3">できるだけ歯を残す、保存的治療</h3>
+        <p class="text-sm md:text-[15px] text-paper/85 leading-loose max-w-xl">
+          安易に抜歯を選ばず、保存の可能性を最後まで丁寧に検討します。当院の中心となる考え方です。<a href="#reserve" class="underline underline-offset-4 ml-2 hover:text-gold">ご相談はこちら →</a>
+        </p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ===== 審美・ホワイトニング特設（大きく美しく） ===== -->
+<section id="whitening" class="bg-tealDk text-paper">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 py-24 md:py-36 grid md:grid-cols-12 gap-12 md:gap-16 items-center">
+    <div class="md:col-span-5">
+      <p class="en text-gold tracking-wider2 text-sm">ESTHETIC & WHITENING</p>
+      <div class="w-px h-14 bg-gold my-6"></div>
+      <h2 class="serif text-3xl md:text-4xl leading-[1.5]">美しさは、<br>自然さの先にある。</h2>
+      <p class="mt-8 text-paper/85 leading-loose text-[15px] md:text-base max-w-md">前歯の色や形が気になって、思いきり笑えない——<br>そんなお悩みにこそ、当院はていねいに向き合います。ご希望や、ライフスタイル、ご予算を伺いながら、もっとも自然で美しい選択肢をご提案いたします。</p>
+
+      <ul class="mt-10 space-y-4 text-[15px]">
+        <li class="flex gap-4 items-start"><span class="num text-gold mt-0.5">01</span><span>ナチュラルに見える「白さ」のご相談</span></li>
+        <li class="flex gap-4 items-start"><span class="num text-gold mt-0.5">02</span><span>セラミックの色味・形状のオーダーメイド</span></li>
+        <li class="flex gap-4 items-start"><span class="num text-gold mt-0.5">03</span><span>歯のエステ／クリーニングによる予防ケア</span></li>
+      </ul>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a href="#reserve" class="inline-flex items-center px-7 py-4 bg-gold text-ink text-sm tracking-wider hover:bg-goldDk hover:text-paper transition">自費メニューのご相談へ</a>
+        <a href="#line" class="inline-flex items-center px-7 py-4 border border-paper/40 text-paper text-sm tracking-wider hover:bg-paper/10 transition">LINEで相談する</a>
+      </div>
+    </div>
+
+    <!-- 写真ギャラリー（大きめ） -->
+    <div class="md:col-span-7 grid grid-cols-6 gap-3 md:gap-4">
+      <img src="images/whitening-1.png" alt="ホワイトニング・クリーニングを受ける女性の口元" class="col-span-3 row-span-2 w-full h-full aspect-[3/4] object-cover">
+      <img src="images/whitening-2.png" alt="自然で美しい前歯の、30代女性の笑顔" class="col-span-3 w-full aspect-[3/2] object-cover">
+      <img src="images/whitening-3.png" alt="セラミックなど審美歯科の素材のディテール" class="col-span-3 w-full aspect-[3/2] object-cover">
+    </div>
+  </div>
+</section>
+
+<!-- ===== 症例紹介（Before/After） ===== -->
+<section id="cases" class="py-24 md:py-36">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+      <p class="eyebrow">CASES</p>
+      <div class="vline mt-6"></div>
+      <h2 class="serif text-2xl md:text-4xl">症例紹介</h2>
+      <p class="mt-6 text-inkSoft leading-loose">実際の治療例をBefore / Afterでご紹介します。<br class="hidden md:block">【要確認：掲載可否・症例数・適応基準】</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-10 md:gap-12">
+      <!-- Case 01 -->
+      <article>
+        <div class="grid grid-cols-2 gap-2 md:gap-3">
+          <figure>
+            <img src="https://placehold.co/500x400/E4E7E9/5C6B75?text=Before" alt="【ここに】症例01・治療前の前歯の口腔内写真（変色／形状）" class="aspect-[5/4] object-cover w-full">
+            <figcaption class="text-center text-[11px] tracking-wider2 mt-2 text-inkSoft en">BEFORE</figcaption>
+          </figure>
+          <figure>
+            <img src="https://placehold.co/500x400/D9E4E7/2F5867?text=After" alt="【ここに】症例01・審美修復後の前歯の口腔内写真（自然な色味と形状）" class="aspect-[5/4] object-cover w-full">
+            <figcaption class="text-center text-[11px] tracking-wider2 mt-2 text-gold en">AFTER</figcaption>
+          </figure>
+        </div>
+        <p class="num text-gold text-sm mt-6">Case 01</p>
+        <h3 class="serif text-lg md:text-xl mt-1 mb-3">前歯の審美修復</h3>
+        <p class="text-sm text-inkSoft leading-loose">変色した前歯を、ご本人の自然な色味と形状に合わせて整えた症例。</p>
+        <p class="text-[11px] text-inkSoft mt-4 leading-relaxed border-t border-line pt-3">【要確認】費用：000,000円〜／治療期間：約0回／主なリスク・副作用</p>
+      </article>
+
+      <!-- Case 02 -->
+      <article>
+        <div class="grid grid-cols-2 gap-2 md:gap-3">
+          <figure>
+            <img src="https://placehold.co/500x400/E4E7E9/5C6B75?text=Before" alt="【ここに】症例02・ホワイトニング前の歯の色（シェード比較）" class="aspect-[5/4] object-cover w-full">
+            <figcaption class="text-center text-[11px] tracking-wider2 mt-2 text-inkSoft en">BEFORE</figcaption>
+          </figure>
+          <figure>
+            <img src="https://placehold.co/500x400/D9E4E7/2F5867?text=After" alt="【ここに】症例02・ホワイトニング後の歯の色（透明感のある自然な白さ）" class="aspect-[5/4] object-cover w-full">
+            <figcaption class="text-center text-[11px] tracking-wider2 mt-2 text-gold en">AFTER</figcaption>
+          </figure>
+        </div>
+        <p class="num text-gold text-sm mt-6">Case 02</p>
+        <h3 class="serif text-lg md:text-xl mt-1 mb-3">ホワイトニング</h3>
+        <p class="text-sm text-inkSoft leading-loose">不自然にならない範囲での、ナチュラルな白さを目指した症例。</p>
+        <p class="text-[11px] text-inkSoft mt-4 leading-relaxed border-t border-line pt-3">【要確認】費用：000,000円〜／治療期間：約0回／主なリスク・副作用</p>
+      </article>
+
+      <!-- Case 03 -->
+      <article>
+        <div class="grid grid-cols-2 gap-2 md:gap-3">
+          <figure>
+            <img src="https://placehold.co/500x400/E4E7E9/5C6B75?text=Before" alt="【ここに】症例03・ノンクラスプデンチャー装着前の口元写真" class="aspect-[5/4] object-cover w-full">
+            <figcaption class="text-center text-[11px] tracking-wider2 mt-2 text-inkSoft en">BEFORE</figcaption>
+          </figure>
+          <figure>
+            <img src="https://placehold.co/500x400/D9E4E7/2F5867?text=After" alt="【ここに】症例03・ノンクラスプデンチャー装着後の口元写真（金具の見えない自然な仕上がり）" class="aspect-[5/4] object-cover w-full">
+            <figcaption class="text-center text-[11px] tracking-wider2 mt-2 text-gold en">AFTER</figcaption>
+          </figure>
+        </div>
+        <p class="num text-gold text-sm mt-6">Case 03</p>
+        <h3 class="serif text-lg md:text-xl mt-1 mb-3">針金の見えない入れ歯</h3>
+        <p class="text-sm text-inkSoft leading-loose">装着時に金具が見えず、自然な見た目と装着感に配慮した症例。</p>
+        <p class="text-[11px] text-inkSoft mt-4 leading-relaxed border-t border-line pt-3">【要確認】費用：000,000円〜／治療期間：約0回／主なリスク・副作用</p>
+      </article>
+    </div>
+
+    <p class="text-center text-[11px] text-inkSoft mt-16 tracking-wider">※ 自由診療を含むため、本番では医療広告ガイドラインに沿った表記を掲載予定です。【要確認】</p>
+  </div>
+</section>
+
+<!-- 院内紹介セクションは、実在確認できない院内設備の誇大表現を避けるため削除。実際の院内写真・情報が揃ったら復活可。 -->
+
+<!-- ===== アクセス・診療時間 ===== -->
+<section id="access" class="py-24 md:py-36">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10">
+    <div class="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+      <p class="eyebrow">ACCESS</p>
+      <div class="vline mt-6"></div>
+      <h2 class="serif text-2xl md:text-4xl">アクセス・診療時間</h2>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-12 md:gap-16">
+      <!-- 地図 -->
+      <div>
+        <div class="aspect-[4/3] bg-tealLt flex flex-col items-center justify-center text-center p-8 border border-line">
+          <span class="en text-gold tracking-wider2 text-sm">MAP</span>
+          <p class="serif text-xl mt-4 text-tealDk">Google Map 埋め込み枠</p>
+          <p class="text-xs text-inkSoft mt-3">【要確認】本番では下記住所のGoogle Maps iframeを差し込み</p>
+        </div>
+
+        <div class="mt-10">
+          <p class="serif text-xl mb-4">藤村歯科医院</p>
+          <p class="text-[15px] leading-loose text-inkSoft">〒604-8006<br>京都府京都市中京区河原町通三条上ル 西側<br>グリントランドビル 2F</p>
+          <hr class="my-6 border-line">
+          <dl class="text-[15px] divide-y divide-line border-t border-b border-line">
+            <div class="grid grid-cols-[110px_1fr] py-3"><dt class="text-inkSoft text-sm tracking-wider">地下鉄</dt><dd>東西線「京都市役所前駅」 徒歩<span class="num text-base">3</span>分</dd></div>
+            <div class="grid grid-cols-[110px_1fr] py-3"><dt class="text-inkSoft text-sm tracking-wider">京阪</dt><dd>「三条駅」 徒歩<span class="num text-base">6</span>分</dd></div>
+            <div class="grid grid-cols-[110px_1fr] py-3"><dt class="text-inkSoft text-sm tracking-wider">阪急</dt><dd>「四条河原町駅」 徒歩<span class="num text-base">12</span>分</dd></div>
+            <div class="grid grid-cols-[110px_1fr] py-3"><dt class="text-inkSoft text-sm tracking-wider">バス</dt><dd>市バス「河原町三条」 目の前<span class="text-inkSoft text-[13px]">（3・7・10・15・37・59系統）</span></dd></div>
+            <div class="grid grid-cols-[110px_1fr] py-3"><dt class="text-inkSoft text-sm tracking-wider">駐車場</dt><dd>御池地下駐車場をご案内</dd></div>
+          </dl>
+        </div>
+      </div>
+
+      <!-- 診療時間 -->
+      <div>
+        <p class="serif text-xl mb-6">診療時間</p>
+        <table class="w-full text-sm text-center border-t border-line">
+          <thead>
+            <tr class="text-inkSoft">
+              <th class="py-4 px-2 text-left pl-2 font-normal tracking-wider">時間 / 曜日</th>
+              <th class="py-4 px-2 font-normal tracking-wider">月</th>
+              <th class="py-4 px-2 font-normal tracking-wider">火</th>
+              <th class="py-4 px-2 font-normal tracking-wider">水</th>
+              <th class="py-4 px-2 font-normal tracking-wider">木</th>
+              <th class="py-4 px-2 font-normal tracking-wider">金</th>
+              <th class="py-4 px-2 font-normal tracking-wider">土<sup class="text-[10px]">※</sup></th>
+              <th class="py-4 px-2 font-normal tracking-wider text-gold">日祝</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-t border-line">
+              <td class="py-5 px-2 text-left pl-2 tel">10:00 – 13:00</td>
+              <td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td>△</td><td class="text-gold">休</td>
+            </tr>
+            <tr class="border-t border-line">
+              <td class="py-5 px-2 text-left pl-2 tel">15:00 – 19:00</td>
+              <td>●</td><td>●</td><td>●</td><td>●</td><td>●</td><td class="text-gold">休</td><td class="text-gold">休</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr><td colspan="8" class="text-xs text-inkSoft text-left pt-6 leading-loose">● 診療　△ 午前のみ診療　休 休診<br>※ 土曜は午前のみの診療です。第1・3・5土曜は休診（診療する土曜は月により異なります）。<span class="text-inkSoft">【要確認】</span><br>※ 休診日：日曜・祝日・第1・3・5土曜</td></tr>
+          </tfoot>
+        </table>
+
+        <div class="mt-10 grid grid-cols-2 gap-x-8 gap-y-4 text-sm">
+          <div>
+            <p class="text-inkSoft text-xs tracking-wider mb-1 en">PAYMENT</p>
+            <p class="serif text-base">クレジットカード／電子マネー対応</p>
+          </div>
+          <div>
+            <p class="text-inkSoft text-xs tracking-wider mb-1 en">RESERVATION</p>
+            <p class="serif text-base">Web ／ LINE ／ お電話</p>
+          </div>
+        </div>
+
+        <a href="tel:0752235818" class="mt-10 inline-flex w-full items-center justify-center gap-3 px-6 py-5 border border-teal text-teal hover:bg-teal hover:text-paper transition">
+          <span class="en text-base">tel.</span><span class="tel text-2xl tracking-wider">075-223-5818</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 最終予約CTA ===== -->
+<section id="reserve" class="relative">
+  <img
+    src="images/reserve-bg.png"
+    alt="窓辺の植物と自然光の白壁（予約セクションの背景）"
+    class="absolute inset-0 w-full h-full object-cover"
+  >
+  <div class="absolute inset-0 bg-tealDk/85"></div>
+  <div class="relative max-w-4xl mx-auto px-6 sm:px-10 py-24 md:py-36 text-center text-paper">
+    <p class="en text-gold tracking-wider2 text-sm">RESERVATION</p>
+    <div class="w-px h-14 bg-gold mx-auto my-8"></div>
+    <h2 class="serif text-2xl md:text-4xl leading-[1.6]">ご予約は、<br>いつでもお気軽に。</h2>
+    <p class="mt-8 text-paper/85 leading-loose">お忙しい方も、初めての方も、<br>Web・LINEから24時間お申し込みいただけます。</p>
+    <div class="mt-12 flex flex-wrap justify-center gap-3">
+      <a href="#" id="reserve-web" class="inline-flex items-center px-8 py-4 bg-gold text-ink text-sm tracking-wider hover:bg-paper transition">Web予約フォーム</a>
+      <a href="#" id="line" class="inline-flex items-center px-8 py-4 bg-paper text-ink text-sm tracking-wider hover:bg-tealLt transition">LINEで予約・相談</a>
+      <a href="tel:0752235818" class="inline-flex items-center px-8 py-4 border border-paper/60 text-paper text-sm tracking-wider hover:bg-paper/10 transition">tel. <span class="tel text-base ml-2 tracking-wider">075-223-5818</span></a>
+    </div>
+    <p class="mt-10 text-[11px] text-paper/60">【要確認】Web予約システムのURL／LINE公式アカウントID</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ===== フッター ===== -->
+<footer class="bg-ink text-paper/80">
+  <div class="max-w-7xl mx-auto px-6 sm:px-10 py-16 md:py-20 grid md:grid-cols-12 gap-10">
+    <div class="md:col-span-5">
+      <p class="en text-gold tracking-wider2 text-xs">FUJIMURA DENTAL CLINIC</p>
+      <p class="serif text-2xl text-paper mt-2">藤村歯科医院</p>
+      <p class="mt-6 text-sm leading-loose">〒604-8006<br>京都府京都市中京区河原町通三条上ル 西側<br>グリントランドビル 2F</p>
+      <p class="mt-4 text-sm">tel. <a href="tel:0752235818" class="tel text-base tracking-wider hover:text-gold">075-223-5818</a></p>
+    </div>
+
+    <div class="md:col-span-3 text-sm">
+      <p class="en text-gold tracking-wider2 text-xs mb-4">HOURS</p>
+      <ul class="space-y-2 leading-loose">
+        <li>午前 <span class="tel">10:00 – 13:00</span></li>
+        <li>午後 <span class="tel">15:00 – 19:00</span></li>
+        <li class="pt-3 border-t border-paper/15 mt-3">休診：第1・3・5土曜／日・祝</li>
+      </ul>
+    </div>
+
+    <div class="md:col-span-4 text-sm">
+      <p class="en text-gold tracking-wider2 text-xs mb-4">SITEMAP</p>
+      <ul class="grid grid-cols-2 gap-y-2">
+        <li><a href="#concept" class="hover:text-gold">理念</a></li>
+        <li><a href="#doctor" class="hover:text-gold">院長紹介</a></li>
+        <li><a href="#menu" class="hover:text-gold">診療案内</a></li>
+        <li><a href="#whitening" class="hover:text-gold">審美・WH</a></li>
+        <li><a href="#cases" class="hover:text-gold">症例紹介</a></li>
+        <li><a href="#access" class="hover:text-gold">アクセス</a></li>
+        <li><a href="#reserve" class="hover:text-gold">ご予約</a></li>
+      </ul>
+
+      <div class="mt-6 flex gap-2">
+        <a href="#reserve" class="flex-1 inline-flex items-center justify-center px-4 py-3 bg-teal text-paper text-xs tracking-wider">Web予約</a>
+        <a href="#line" class="flex-1 inline-flex items-center justify-center px-4 py-3 border border-paper/40 text-paper text-xs tracking-wider">LINE予約</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-paper/10">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 py-6 text-[11px] text-paper/50 flex flex-wrap justify-between gap-3">
+      <p>© Fujimura Dental Clinic. All rights reserved.</p>
+      <p>このページはリニューアル提案用デモです（実コンテンツ・写真は本番で差し替え）</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== モバイルメニュー開閉 ===== -->
+<script>
+  (function () {
+    var btn = document.getElementById('menuToggle');
+    var menu = document.getElementById('mobileMenu');
+    var overlay = document.getElementById('menuOverlay');
+    if (!btn || !menu) return;
+
+    function openMenu() {
+      menu.classList.remove('hidden');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('aria-label', 'メニューを閉じる');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeMenu() {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('aria-label', 'メニューを開く');
+      document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', function () {
+      menu.classList.contains('hidden') ? openMenu() : closeMenu();
+    });
+    if (overlay) overlay.addEventListener('click', closeMenu);
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', closeMenu);
+    });
+    window.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script>
+
+</body>
+</html>
