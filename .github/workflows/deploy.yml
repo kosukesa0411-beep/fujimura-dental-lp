@@ -1,10 +1,9 @@
 name: Deploy to Cloudflare Pages
 
-# main ブランチに push されたら自動でデプロイする
+# main ブランチに push されたら自動でデプロイ
 on:
   push:
     branches: [main]
-  # 手動実行も可能にしておく（GitHub Actions の画面からポチっと押せる）
   workflow_dispatch:
 
 jobs:
@@ -18,20 +17,21 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2. デプロイに不要なファイルを削除（AI生成元画像、バックアップHTML、Macのゴミ）
-      - name: Clean up unused files
+      # 2. デプロイ用フォルダを準備（index.html と images/ だけコピー）
+      - name: Prepare deploy directory
         run: |
-          rm -f "Generated Image"*.png
-          rm -f "index v"*.html
-          rm -f .DS_Store
-          find . -name "._*" -delete
-          echo "=== クリーン後のファイル一覧 ==="
-          ls -la
+          mkdir -p dist
+          cp index.html dist/
+          cp -r images dist/
+          echo "=== dist の中身 ==="
+          ls -la dist/
 
-      # 3. Cloudflare Pages にデプロイ（プロジェクトがなければ自動作成）
+      # 3. Cloudflare Pages にデプロイ（API直叩き、wrangler不使用）
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: AdrianGonz97/refined-cf-pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy . --project-name=fujimura-dental-lp --branch=main --commit-dirty=true
+          projectName: fujimura-dental-lp
+          directory: dist
+          deploymentName: Production
