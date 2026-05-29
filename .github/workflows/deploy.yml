@@ -26,7 +26,35 @@ jobs:
           echo "=== dist の中身 ==="
           ls -la dist/
 
-      # 3. Cloudflare Pages にデプロイ（API直叩き、wrangler不使用）
+      # 3. Cloudflare Pages プロジェクトを作成（既に存在すれば無視）
+      - name: Ensure Cloudflare Pages project exists
+        env:
+          CF_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          echo "=== プロジェクト作成を試行（既存ならスキップ） ==="
+          HTTP_CODE=$(curl -s -o /tmp/cf-response.json -w "%{http_code}" -X POST \
+            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects" \
+            -H "Authorization: Bearer ${CF_API_TOKEN}" \
+            -H "Content-Type: application/json" \
+            -d '{"name":"fujimura-dental-lp","production_branch":"main"}')
+          echo "HTTPステータス: $HTTP_CODE"
+          cat /tmp/cf-response.json
+          echo ""
+          # 200=作成成功、409=既に存在（どちらもOK）
+          if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "409" ]; then
+            echo "✅ プロジェクト準備OK"
+          else
+            echo "⚠️ プロジェクト作成で予期しないステータス: $HTTP_CODE"
+            # エラーメッセージに "already exists" が含まれていればOK
+            if grep -q "already exists\|duplicate" /tmp/cf-response.json; then
+              echo "✅ 既存プロジェクトのため続行"
+            else
+              exit 1
+            fi
+          fi
+
+      # 4. Cloudflare Pages にデプロイ（API直叩き、wrangler不使用）
       - name: Deploy to Cloudflare Pages
         uses: AdrianGonz97/refined-cf-pages-action@v1
         with:
