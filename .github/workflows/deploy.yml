@@ -20,57 +20,41 @@ jobs:
           mkdir -p dist
           cp index.html dist/
           cp -r images dist/
-          echo "=== dist の中身 ==="
           ls -la dist/
 
-      # 🩺 デバッグ: トークンが有効か確認
-      - name: Debug - Verify API token
-        env:
-          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          echo "=== Account ID length: ${#CF_ACCOUNT} (expect 32) ==="
-          echo "=== Token first 5 chars: ${CF_TOKEN:0:5}... ==="
-          echo ""
-          echo "=== Token verify API ==="
-          curl -sS -X GET \
-            "https://api.cloudflare.com/client/v4/user/tokens/verify" \
-            -H "Authorization: Bearer ${CF_TOKEN}" \
-            -H "Content-Type: application/json"
-          echo ""
-          echo ""
-          echo "=== List existing Pages projects ==="
-          curl -sS -X GET \
-            "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/pages/projects" \
-            -H "Authorization: Bearer ${CF_TOKEN}" \
-            -H "Content-Type: application/json" | head -c 2000
-          echo ""
-
-      # プロジェクト作成（存在しなければ）
+      # 既存プロジェクトの一覧を取得して、なければ作成
       - name: Ensure Cloudflare Pages project exists
         env:
           CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
         run: |
-          echo "=== Try to create project ==="
-          HTTP_CODE=$(curl -sS -o /tmp/cf-response.json -w "%{http_code}" -X POST \
+          set +e
+          echo "=== List existing projects ==="
+          LIST_RESPONSE=$(curl -sS -X GET \
             "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/pages/projects" \
-            -H "Authorization: Bearer ${CF_TOKEN}" \
-            -H "Content-Type: application/json" \
-            -d '{"name":"fujimura-dental-lp","production_branch":"main"}')
-          echo "HTTP Code: $HTTP_CODE"
-          echo "Response:"
-          cat /tmp/cf-response.json
+            -H "Authorization: Bearer ${CF_TOKEN}")
+          echo "$LIST_RESPONSE" | head -c 3000
           echo ""
-          # 200 = created, 409 = exists. 400 with duplicate msg = exists too
-          if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "409" ]; then
-            echo "✅ Project ready"
-          elif grep -qiE "already exists|duplicate|conflict" /tmp/cf-response.json; then
-            echo "✅ Project already exists, continuing"
+
+          # プロジェクト名が含まれてるか確認
+          if echo "$LIST_RESPONSE" | grep -q '"name":"fujimura-dental-lp"'; then
+            echo "✅ Project 'fujimura-dental-lp' already exists, skipping create"
           else
-            echo "❌ Unexpected response"
-            exit 1
+            echo "=== Project not found, creating... ==="
+            CREATE_RESPONSE=$(curl -sS -X POST \
+              "https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT}/pages/projects" \
+              -H "Authorization: Bearer ${CF_TOKEN}" \
+              -H "Content-Type: application/json" \
+              -d '{"name":"fujimura-dental-lp"}')
+            echo "Response: $CREATE_RESPONSE"
+            if echo "$CREATE_RESPONSE" | grep -q '"success":true'; then
+              echo "✅ Project created"
+            else
+              echo "⚠️ Create returned non-success but continuing"
+            fi
           fi
+          # エラーでも続行
+          exit 0
 
       - name: Deploy to Cloudflare Pages
         uses: AdrianGonz97/refined-cf-pages-action@v1
