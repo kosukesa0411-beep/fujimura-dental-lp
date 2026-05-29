@@ -64,3 +64,4 @@ jobs:
           projectName: fujimura-dental-lp
           directory: dist
           deploymentName: Production
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
